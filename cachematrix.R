@@ -3,13 +3,25 @@
 
 ## Write a short comment describing this function
 
-makeCacheMatrix <- function(x = matrix()) {
-
+oldmat<-NULL
+matequal <- function(x, y){
+is.matrix(x) && is.matrix(y) && dim(x) == dim(y) && all(x == y)
 }
-
-
-## Write a short comment describing this function
-
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+makeCacheMatrix<- function(y){ 
+cach <<-y
 }
+cacheSolve<-function(x) {
+if(!is.null(m) && (matequal(x,oldmat)))
+{
+message("getting cached data")
+return (cach)
+}
+else
+{
+oldmat <<-x
+m <-solve(x)
+return (m)
+makeCacheMatrix(m)
+}
+}
+  
